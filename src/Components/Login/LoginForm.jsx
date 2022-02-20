@@ -4,33 +4,44 @@ import Button from "../Forms/Button";
 import useForm from "../../Hooks/useForm";
 import loginSchema from "../../Constants/Schemas/loginSchema";
 import { hasInvalidField } from "../../Utils/Form";
+import { TOKEN_POST, USER_GET } from "../../Utils/api";
+import { useCallback, useEffect } from "react";
 
 const LoginForm = () => {
   const username = useForm(loginSchema, "username");
   const password = useForm(loginSchema, "password");
+  const fields = [username, password];
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-    const fields = [username, password];
+  useEffect(() => {
+    const token = window.localStorage.getItem("token");
+    token && getUser(token);
+  }, []);
 
-    if (!(await hasInvalidField(fields))) {
-      const response = await fetch(
-        "https://dogsapi.origamid.dev/json/jwt-auth/v1/token",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: username.value,
-            password: password.value,
-          }),
-        }
-      );
-      const json = await response.json();
-      console.log(json);
-    }
-  }
+  const getUser = useCallback(async (token) => {
+    const { url, options } = USER_GET(token);
+    const response = await fetch(url, options);
+    const json = await response.json();
+    console.log(json);
+  }, []);
+
+  const handleSubmit = useCallback(
+    async (event) => {
+      event.preventDefault();
+
+      if (!(await hasInvalidField(fields))) {
+        const { url, options } = TOKEN_POST({
+          username: username.value,
+          password: password.value,
+        });
+
+        const response = await fetch(url, options);
+        const json = await response.json();
+        window.localStorage.setItem("token", json.token);
+        getUser(json.token);
+      }
+    },
+    [...fields]
+  );
 
   return (
     <section>
