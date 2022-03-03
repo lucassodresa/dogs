@@ -32,11 +32,7 @@ const LoginForm = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <Input label="Username" name="username" {...username} />
         <Input label="Password" type="password" name="password" {...password} />
-        {loading ? (
-          <Button disabled>Loading...</Button>
-        ) : (
-          <Button>Log in</Button>
-        )}
+        <Button loading={loading}>Log in</Button>
         <Error error={error} />
       </form>
       <Link className={styles.lost} to="/login/lost">
