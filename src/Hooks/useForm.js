@@ -17,7 +17,7 @@ const useForm = (schema, fieldName) => {
         return false;
       }
     },
-    [value]
+    [fieldName, schema]
   );
 
   const onChange = useCallback(
@@ -25,12 +25,12 @@ const useForm = (schema, fieldName) => {
       error && validate(target.value);
       setValue(target.value);
     },
-    [error]
+    [error, validate]
   );
 
   const onBlur = useCallback(() => {
     validate(value);
-  }, [value]);
+  }, [value, validate]);
 
   return {
     value,
