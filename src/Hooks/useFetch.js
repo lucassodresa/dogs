@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 const useFetch = () => {
   const [data, setData] = useState(null);
@@ -21,6 +21,7 @@ const useFetch = () => {
     } finally {
       setData(json);
       setLoading(false);
+      console.log("fez login");
     }
     return { response, json };
   }, []);
