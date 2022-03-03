@@ -9,7 +9,7 @@ export const UserStorage = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const userLogout = useCallback(async () => {
     setData(null);
@@ -18,7 +18,6 @@ export const UserStorage = ({ children }) => {
     setIsLoggedIn(false);
     window.localStorage.removeItem("token");
     navigate("/login");
-    console.log("redirecionar");
   }, [navigate]);
 
   const getUser = useCallback(async (token) => {
@@ -54,25 +53,28 @@ export const UserStorage = ({ children }) => {
   useEffect(() => {
     (async () => {
       const token = window.localStorage.getItem("token");
-      if (token) {
-        try {
-          setError(null);
-          setLoading(true);
-          const { url, options } = TOKEN_VALIDATE_POST(token);
-          const response = await fetch(url, options);
-          if (!response.ok) throw new Error("Invalid token");
-          await getUser(token);
-          navigate("/account");
-        } catch (error) {
-          userLogout();
-        } finally {
-          setLoading(false);
+
+      if (!loading && !isLoggedIn) {
+        if (token) {
+          try {
+            setError(null);
+            setLoading(true);
+            const { url, options } = TOKEN_VALIDATE_POST(token);
+            const response = await fetch(url, options);
+            if (!response.ok) throw new Error("Invalid token");
+            await getUser(token);
+            navigate("/account");
+          } catch (error) {
+            userLogout();
+          } finally {
+            setLoading(false);
+          }
+        } else {
+          setIsLoggedIn(false);
         }
-      } else {
-        setIsLoggedIn(false);
       }
     })();
-  }, [getUser, navigate, userLogout]);
+  }, [navigate, getUser, userLogout, isLoggedIn, loading]);
 
   return (
     <UserContext.Provider
