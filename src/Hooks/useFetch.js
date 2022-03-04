@@ -21,7 +21,6 @@ const useFetch = () => {
     } finally {
       setData(json);
       setLoading(false);
-      console.log("fez login");
     }
     return { response, json };
   }, []);
