@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./FeedPhotosItem.module.css";
 
 const FeedPhotosItem = ({ photo }) => {
@@ -12,4 +13,11 @@ const FeedPhotosItem = ({ photo }) => {
   );
 };
 
+FeedPhotosItem.defaultProps = {
+  photo: null,
+};
+
+FeedPhotosItem.propTypes = {
+  photo: PropTypes.object,
+};
 export default FeedPhotosItem;
