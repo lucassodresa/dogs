@@ -38,7 +38,8 @@ const PhotoCommentsForm = ({ id, setComments }) => {
         id="comment"
         name="comment"
         placeholder="Bark..."
-        {...comment}
+        value={comment.value}
+        onChange={comment.onChange}
       />
       <button className={styles.button}>
         <SendIcon />
