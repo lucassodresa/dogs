@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import FeedPhotosItem from "./FeedPhotosItem";
 import useFetch from "../../Hooks/useFetch";
 import { PHOTOS_GET } from "../../Utils/api";
@@ -6,14 +7,14 @@ import Error from "../Helper/Error";
 import Loading from "../Helper/Loading";
 import styles from "./FeedPhotos.module.css";
 
-const FeedPhotos = () => {
+const FeedPhotos = ({ setModalPhoto }) => {
   const { data, loading, error, request } = useFetch();
 
   useEffect(() => {
     (async () => {
       const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: 0 });
       const { json } = await request(url, options);
-      console.log(json);
+      //   console.log(json);
     })();
   }, [request]);
 
@@ -23,10 +24,22 @@ const FeedPhotos = () => {
   return (
     <ul className={`${styles.feed} animationLeft`}>
       {data.map((photo) => (
-        <FeedPhotosItem key={photo.id} photo={photo} />
+        <FeedPhotosItem
+          key={photo.id}
+          photo={photo}
+          setModalPhoto={setModalPhoto}
+        />
       ))}
     </ul>
   );
+};
+
+FeedPhotos.defaultProps = {
+  setModalPhoto: () => {},
+};
+
+FeedPhotos.propTypes = {
+  setModalPhoto: PropTypes.func,
 };
 
 export default FeedPhotos;
