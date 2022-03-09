@@ -24,6 +24,8 @@
 
 .img {
   grid-row: 1/4;
+  display: flex;
+  align-items: center;
 }
 
 .comments {
