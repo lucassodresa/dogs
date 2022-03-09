@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import styles from "./FeedPhotosItem.module.css";
+import Image from "../Helper/Image";
 
 const FeedPhotosItem = ({ photo, setModalPhoto }) => {
   const handleClick = useCallback(
@@ -13,7 +14,7 @@ const FeedPhotosItem = ({ photo, setModalPhoto }) => {
 
   return (
     <li className={styles.photo} onClick={handleClick}>
-      <img src={src} alt={title} />
+      <Image src={src} alt={title} />
       <span className={styles.views}>{views}</span>
     </li>
   );
