@@ -26,7 +26,6 @@ export const UserStorage = ({ children }) => {
     const json = await response.json();
     setData(json);
     setIsLoggedIn(true);
-    console.log(json);
   }, []);
 
   const userLogin = useCallback(
