@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../Contexts/UserContext";
 import Image from "../Helper/Image";
@@ -42,6 +43,13 @@ const PhotoContent = ({ data, isSingle }) => {
       <PhotoComments id={photo.id} comments={comments} isSingle={isSingle} />
     </div>
   );
+};
+
+PhotoContent.defaultProps = {};
+
+PhotoContent.propTypes = {
+  data: PropTypes.object,
+  isSingle: PropTypes.bool,
 };
 
 export default PhotoContent;

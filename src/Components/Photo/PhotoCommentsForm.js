@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import PropTypes from "prop-types";
 import { ReactComponent as SendIcon } from "../../Assets/send.svg";
 import commentSchema from "../../Constants/Schemas/commentSchema";
 import useFetch from "../../Hooks/useFetch";
@@ -50,6 +51,14 @@ const PhotoCommentsForm = ({ id, setComments, isSingle }) => {
       <Error error={error} />
     </form>
   );
+};
+
+PhotoCommentsForm.defaultProps = {};
+
+PhotoCommentsForm.propTypes = {
+  id: PropTypes.string,
+  setComments: PropTypes.array,
+  isSingle: PropTypes.bool,
 };
 
 export default PhotoCommentsForm;

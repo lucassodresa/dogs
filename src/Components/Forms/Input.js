@@ -57,6 +57,7 @@ Input.propTypes = {
   error: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  className: PropTypes.string,
 };
 
 export default Input;

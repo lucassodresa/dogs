@@ -32,12 +32,11 @@ const FeedModal = ({ photo, setModalPhoto }) => {
   );
 };
 
-FeedModal.defaultProps = {
-  photo: null,
-};
+FeedModal.defaultProps = {};
 
 FeedModal.propTypes = {
   photo: PropTypes.object,
+  setModalPhoto: PropTypes.func,
 };
 
 export default FeedModal;

@@ -20,10 +20,7 @@ const FeedPhotosItem = ({ photo, setModalPhoto }) => {
   );
 };
 
-FeedPhotosItem.defaultProps = {
-  photo: null,
-  setModalPhoto: () => {},
-};
+FeedPhotosItem.defaultProps = {};
 
 FeedPhotosItem.propTypes = {
   photo: PropTypes.object,

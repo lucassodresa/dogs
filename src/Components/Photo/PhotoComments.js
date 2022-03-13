@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
 import { UserContext } from "../../Contexts/UserContext";
 import PhotoCommentsForm from "./PhotoCommentsForm";
 import styles from "./PhotoComments.module.css";
@@ -35,6 +36,14 @@ const PhotoComments = ({ id, comments: commentsProps, isSingle }) => {
       )}
     </>
   );
+};
+
+PhotoComments.defaultProps = {};
+
+PhotoComments.propTypes = {
+  id: PropTypes.string,
+  comments: PropTypes.array,
+  isSingle: PropTypes.bool,
 };
 
 export default PhotoComments;

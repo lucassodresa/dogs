@@ -16,7 +16,7 @@ const FeedPhotos = ({ setInfinite, setModalPhoto, userId, page }) => {
       const { url, options } = PHOTOS_GET({
         page,
         total,
-        user: userId || 0,
+        user: userId,
       });
       const { response, json } = await request(url, options);
       if (response?.ok && json?.length < total) setInfinite(false);
@@ -41,11 +41,15 @@ const FeedPhotos = ({ setInfinite, setModalPhoto, userId, page }) => {
 };
 
 FeedPhotos.defaultProps = {
-  setModalPhoto: () => {},
+  page: 1,
+  userId: 0,
 };
 
 FeedPhotos.propTypes = {
+  setInfinite: PropTypes.func,
   setModalPhoto: PropTypes.func,
+  page: PropTypes.number,
+  userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default FeedPhotos;

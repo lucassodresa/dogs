@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import PropTypes from "prop-types";
 import useFetch from "../../Hooks/useFetch";
 import { PHOTO_DELETE } from "../../Utils/api";
 import styles from "./PhotoDelete.module.css";
@@ -31,4 +32,9 @@ const PhotoDelete = ({ id }) => {
   );
 };
 
+PhotoDelete.defaultProps = {};
+
+PhotoDelete.propTypes = {
+  id: PropTypes.object,
+};
 export default PhotoDelete;
