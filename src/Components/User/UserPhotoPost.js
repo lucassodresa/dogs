@@ -15,10 +15,9 @@ const UserPhotoPost = () => {
   const name = useForm(photoPostSchema, "name");
   const weight = useForm(photoPostSchema, "weight");
   const age = useForm(photoPostSchema, "age");
-  //   const image = useForm(photoPostSchema, "image");
 
   const [image, setImage] = useState({});
-  const { data, error, loading, request } = useFetch();
+  const { error, loading, request } = useFetch();
   const navigate = useNavigate();
 
   const handleSubmit = useCallback(
