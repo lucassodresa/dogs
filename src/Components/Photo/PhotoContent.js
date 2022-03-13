@@ -8,9 +8,7 @@ import styles from "./PhotoContent.module.css";
 import PhotoDelete from "./PhotoDelete";
 
 const PhotoContent = ({ data, isSingle }) => {
-  const {
-    data: { username },
-  } = useContext(UserContext);
+  const user = useContext(UserContext);
   if (!data) return null;
 
   const { photo, comments } = data;
@@ -23,7 +21,7 @@ const PhotoContent = ({ data, isSingle }) => {
       <div className={styles.details}>
         <div>
           <p className={styles.author}>
-            {username === photo.author ? (
+            {user?.data?.username === photo.author ? (
               <PhotoDelete id={photo.id} />
             ) : (
               <Link to={`/profile/${photo.author}`}>@{photo.author}</Link>
