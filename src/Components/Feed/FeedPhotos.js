@@ -20,7 +20,6 @@ const FeedPhotos = ({ setInfinite, setModalPhoto, userId, page }) => {
       });
       const { response, json } = await request(url, options);
       if (response?.ok && json?.length < total) setInfinite(false);
-      console.log(json);
     })();
   }, [request, userId, page, setInfinite]);
 
