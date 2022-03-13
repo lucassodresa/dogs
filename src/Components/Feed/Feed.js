@@ -50,6 +50,17 @@ const Feed = ({ userId }) => {
           setInfinite={setInfinite}
         />
       ))}
+      {!infinite && !userId && (
+        <p
+          style={{
+            textAlign: "center",
+            padding: "2rem 0 4rem 0",
+            color: "#888",
+          }}
+        >
+          There's no photos to show
+        </p>
+      )}
     </div>
   );
 };
