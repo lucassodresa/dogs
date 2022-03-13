@@ -20,7 +20,7 @@ const LoginLostPassword = () => {
           login: username.value,
           url: `${origin}/login/reset`,
         });
-        const { json } = await request(url, options);
+        request(url, options);
       }
     },
     [username, request]
