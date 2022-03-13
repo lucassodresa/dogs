@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import styles from "./UserPhotoPost.module.css";
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
@@ -9,6 +9,7 @@ import { hasInvalidField } from "../../Utils/Form";
 import useFetch from "../../Hooks/useFetch";
 import { PHOTO_POST } from "../../Utils/api";
 import { useNavigate } from "react-router-dom";
+import Head from "../Helper/Head";
 
 const UserPhotoPost = () => {
   const name = useForm(photoPostSchema, "name");
@@ -50,6 +51,7 @@ const UserPhotoPost = () => {
   }, []);
   return (
     <section className={`${styles.photoPost} animationLeft`}>
+      <Head title="Post your photo" />
       <form onSubmit={handleSubmit}>
         <Input label="Name" type="text" name="name" {...name} />
         <Input label="Weight" type="number" name="weight" {...weight} />

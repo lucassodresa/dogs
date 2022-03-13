@@ -7,6 +7,7 @@ import useFetch from "../../Hooks/useFetch";
 import { PASSWORD_LOST } from "../../Utils/api";
 import Error from "../Helper/Error";
 import { hasInvalidField } from "../../Utils/Form";
+import Head from "../Helper/Head";
 const LoginLostPassword = () => {
   const username = useForm(lostPasswordSchema, "username");
   const { data, loading, error, request } = useFetch();
@@ -28,6 +29,7 @@ const LoginLostPassword = () => {
 
   return (
     <section>
+      <Head title="Lost password" />
       <h1 className="title">Lost password</h1>
       {data ? (
         <p style={{ color: "#4c1" }}>{data}</p>

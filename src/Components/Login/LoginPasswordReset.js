@@ -8,6 +8,7 @@ import { PASSWORD_RESET } from "../../Utils/api";
 import Error from "../Helper/Error";
 import { hasInvalidField } from "../../Utils/Form";
 import { useNavigate } from "react-router-dom";
+import Head from "../Helper/Head";
 
 const LoginPasswordReset = () => {
   const [key, setKey] = useState("");
@@ -46,6 +47,7 @@ const LoginPasswordReset = () => {
 
   return (
     <div>
+      <Head title="Reset password" />
       <h1 className="title">Reset password</h1>
       <form onSubmit={handleSubmit}>
         <Input

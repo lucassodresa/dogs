@@ -8,6 +8,7 @@ import { hasInvalidField } from "../../Utils/Form";
 import Button from "../Forms/Button";
 import Input from "../Forms/Input";
 import Error from "../Helper/Error";
+import Head from "../Helper/Head";
 
 const LoginCreate = () => {
   const username = useForm(registerSchema, "username");
@@ -36,6 +37,7 @@ const LoginCreate = () => {
 
   return (
     <section className="animationLeft">
+      <Head title="Create your account" />
       <h1 className="title">Register</h1>
       <form onSubmit={handleSubmit}>
         <Input label="Username" type="text" name="username" {...username} />
