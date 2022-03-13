@@ -35,6 +35,6 @@ const PhotoDelete = ({ id }) => {
 PhotoDelete.defaultProps = {};
 
 PhotoDelete.propTypes = {
-  id: PropTypes.object,
+  id: PropTypes.number,
 };
 export default PhotoDelete;

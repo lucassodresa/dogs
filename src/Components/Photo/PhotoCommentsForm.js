@@ -56,8 +56,8 @@ const PhotoCommentsForm = ({ id, setComments, isSingle }) => {
 PhotoCommentsForm.defaultProps = {};
 
 PhotoCommentsForm.propTypes = {
-  id: PropTypes.string,
-  setComments: PropTypes.array,
+  id: PropTypes.number,
+  setComments: PropTypes.func,
   isSingle: PropTypes.bool,
 };
 

@@ -41,7 +41,7 @@ const PhotoComments = ({ id, comments: commentsProps, isSingle }) => {
 PhotoComments.defaultProps = {};
 
 PhotoComments.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   comments: PropTypes.array,
   isSingle: PropTypes.bool,
 };
