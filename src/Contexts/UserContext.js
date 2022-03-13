@@ -47,7 +47,7 @@ export const UserStorage = ({ children }) => {
         setLoading(false);
       }
     },
-    [getUser]
+    [getUser, navigate]
   );
 
   useEffect(() => {
